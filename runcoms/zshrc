@@ -12,6 +12,13 @@ fi
 
 # Customize to your needs...
 
+# https://wiki.archlinux.org/index.php/Fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+eval "$(fasd --init auto)"
+
+# Some functions to load into zsh
 fpath=( $HOME/documents/zsh_functions $fpath )
 autoload -Uz mkcd vimag vimfind vimgit mkcp backport
 
