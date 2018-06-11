@@ -11,3 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+fpath=( $HOME/documents/zsh_functions $fpath )
+autoload -Uz mkcd vimag vimfind vimgit mkcp backport
+
+#
+# Aliases
+#
+
+alias ls='exa -F --group-directories-first --color=auto'
+alias vim=nvim
+alias pacman="pacman --hookdir $HOME/.config/pacman/hooks"
+alias pacmatic="pacmatic --hookdir $HOME/.config/pacman/hooks"
