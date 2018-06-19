@@ -23,6 +23,26 @@ fpath=( $HOME/documents/zsh_functions $fpath )
 autoload -Uz mkcd vimag vimfind vimgit mkcp backport
 
 #
+# Configure gpg and ssh agents: https://wiki.archlinux.org/index.php/GnuPG
+#
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  # Load identities.
+  if ssh-add -l 2>&1 | grep -q 'The agent has no identities'; then
+    if [[ -n "$DISPLAY" && -x "$SSH_ASKPASS" ]]; then
+      ssh-add ~/.ssh/id_rsa < /dev/null 2> /dev/null
+    else
+      ssh-add ~/.ssh/id_rsa 2> /dev/null
+    fi
+  fi
+fi
+# Set GPG TTY
+export GPG_TTY=$(tty)
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+#
 # Aliases
 #
 
