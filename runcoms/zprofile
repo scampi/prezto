@@ -5,6 +5,11 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+export EDITOR=nvim
+export PASSWORD_STORE_DIR=~/Nextcloud/password-store
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src/"
+eval "$(luarocks path)"
+
 #
 # Browser
 #
@@ -38,6 +43,7 @@ path=(
   /usr/local/{bin,sbin}
   $(ruby -e 'print Gem.user_dir')/bin
   $path
+  %HOME/.local/bin
 )
 
 #
