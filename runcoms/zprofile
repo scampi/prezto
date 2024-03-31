@@ -58,7 +58,6 @@ path=(
   /usr/local/{,s}bin(N)
   $(ruby -e 'print Gem.user_dir')/bin
   $path
-  %HOME/.local/bin
 )
 
 #

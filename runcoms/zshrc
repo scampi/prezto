@@ -12,15 +12,19 @@ fi
 
 # Customize to your needs...
 
+# https://github.com/todotxt/todo.txt-cli
+alias todo=todo.sh
+
 # https://wiki.archlinux.org/index.php/Fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 source /usr/share/nvm/init-nvm.sh
 
-eval "$(fasd --init auto)"
-
-eval "$(pyenv init -)"
+#eval "$(fasd --init auto)"
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(jira --completion-script-bash)"
 
 # Some functions to load into zsh
 fpath=( $HOME/documents/zsh_functions $fpath )
@@ -42,9 +46,6 @@ export GPG_TTY=$(tty)
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
-# show the error code
-PROMPT='%(?.%F{magenta}.%F{red}$?)❯%f '
-
 #
 # Aliases
 #
@@ -53,7 +54,7 @@ alias ls='exa -F --group-directories-first --color=auto'
 alias vim=nvim
 alias pacman="pacman --hookdir $HOME/.config/pacman/hooks"
 alias pacmatic="pacmatic --hookdir $HOME/.config/pacman/hooks"
-alias cat='bat'
+alias cat='bat --theme="TwoDark" --style=changes,rule '
 
 # # Will return non-zero status if the current directory is not managed by git
 # is_in_git_repo() {
