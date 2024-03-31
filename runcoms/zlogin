@@ -17,8 +17,6 @@
   fi
 } &!
 
-[[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 && -n "$XDG_VTNR" ]] && exec startx
-
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
 
